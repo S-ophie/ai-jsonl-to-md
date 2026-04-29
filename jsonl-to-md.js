@@ -194,6 +194,7 @@ function processDirectory(inputDir, outputDir) {
     if (statSync(fullPath).isDirectory()) {
       // 递归处理子目录
       const subOutputDir = join(outputDir, file);
+      mkdirSync(subOutputDir, { recursive: true });
       processDirectory(fullPath, subOutputDir);
     } else if (file.endsWith('.jsonl')) {
       const baseName = file.replace('.jsonl', '');
